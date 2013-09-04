@@ -11,7 +11,9 @@ function embed(width, height){
         //we go with 10 frames/s
         var interval = setInterval(function(){
             //we do an http request for latest image provided by ffmpeg
-            imageObj.src="/frame/";
+            //send a timestamp query param (some browsers abort consecutive requests)
+            var t = new Date().getTime()
+            imageObj.src="/frame/?t="+t;
         , 100})
 }
 
